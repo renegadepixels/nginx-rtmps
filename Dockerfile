@@ -24,6 +24,9 @@ RUN mkdir -p /tmp/build/nginx-rtmp-module && \
     tar -zxf nginx-rtmp-module-${NGINX_RTMP_MODULE_VERSION}.tar.gz && \
     cd nginx-rtmp-module-${NGINX_RTMP_MODULE_VERSION}
 
+# Install ffmpeg for transcoding
+RUN apt-get update && apt-get install -y ffmpeg
+
 # Build and install Nginx
 # The default puts everything under /usr/local/nginx, so it's needed to change
 # it explicitly. Not just for order but to have it in the PATH
